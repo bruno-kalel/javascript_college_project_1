@@ -118,11 +118,6 @@ function adicionar()
                     }
                 json.push(novoProduto)
             }
-            else
-            {
-                // pq estão saindo tantos alerts? deveria ser apenas um
-                alert('id já existe, tente outro')
-            }
             mostrarProdutos()
         })
 }
@@ -148,10 +143,6 @@ function atualizar()
                 {
                     json[i].quantity = novaQuantidade
                     break
-                }
-                else
-                {
-                    alert('id não existe, tente outro')
                 }
             }
             mostrarProdutos()

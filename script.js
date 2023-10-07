@@ -1,4 +1,9 @@
-let json =
+const dadosGuardados = localStorage.getItem('dadosGuardados')
+
+// se os dados guardados existem, eles substituirão o padrão aqui
+// se não, vai esse mesmo
+
+let json = dadosGuardados ? JSON.parse(dadosGuardados ) :
 [
     {
         "id": 1,
@@ -35,6 +40,9 @@ function mostrarProdutos()
                                quantity: ${produto.quantity}<br><br>`
         listaProdutos.appendChild(itemLista)
     })
+    // guardar os valores no localstorage aqui nessa função
+    // já que ela é chamada em todos os métodos que alteram o json
+    localStorage.setItem('dadosGuardados', JSON.stringify(json))
 }
 
 // mostrar produtos pela primeira vez, ao abrir a página

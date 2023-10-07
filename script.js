@@ -1,4 +1,5 @@
-let json = [
+let json =
+[
     {
         "id": 1,
         "name": "produto a",
@@ -24,7 +25,7 @@ let json = [
 function mostrarProdutos()
 {
     const listaProdutos = document.getElementById('lista-produtos')
-	// limpar lista antes de recarregar
+    // limpar lista antes de recarregar
     listaProdutos.innerHTML = ''
     json.forEach(produto =>
     {
@@ -43,44 +44,54 @@ function mostrarForm(formId)
 {
     const forms = document.querySelectorAll('form');
     forms.forEach(form =>
-	{
+    {
         form.style.display = 'none';
     });
     const formParaMostrar = document.getElementById(formId);
     formParaMostrar.style.display = 'block';
 }
 
-document.getElementById('button-adicionar')
+document
+    .getElementById('button-adicionar')
     .addEventListener('click', () =>
-	{
+    {
         mostrarForm('form-adicionar')
     })
 
-document.getElementById('button-atualizar')
+document
+    .getElementById('button-atualizar')
     .addEventListener('click', () =>
-	{
+    {
         mostrarForm('form-atualizar')
     })
 
-document.getElementById('button-deletar')
+document
+    .getElementById('button-deletar')
     .addEventListener('click', () =>
-	{
+    {
         mostrarForm('form-deletar')
     })
 
 function adicionar()
 {
-    document.getElementById('form-adicionar')
+    document
+        .getElementById('form-adicionar')
         .addEventListener('submit', function (event)
-		{
+        {
             event.preventDefault()
-            const idParaCriar = parseInt(document.getElementById('id-adicionar').value)
-            const nameParaCriar = document.getElementById('name-adicionar').value
-            const quantityParaCriar = parseInt(document.getElementById('quantity-adicionar').value)
+            const idParaCriar = parseInt(document
+                .getElementById('id-adicionar')
+                .value)
+            const nameParaCriar = document
+                .getElementById('name-adicionar')
+                .value
+            const quantityParaCriar = parseInt(document
+                .getElementById('quantity-adicionar')
+                .value)
 
             const idExiste = json.some(item => item.id === idParaCriar)
 
-            if(!idExiste)
+            if (!idExiste)
             {
                 const novoProduto =
                     {
@@ -92,8 +103,8 @@ function adicionar()
             }
             else
             {
-                // pq estão saindo tantos logs?
-                console.log('id já existe, tente outro')
+                // pq estão saindo tantos alerts? deveria ser apenas um
+                alert('id já existe, tente outro')
             }
             mostrarProdutos()
         })
@@ -101,7 +112,8 @@ function adicionar()
 
 function atualizar()
 {
-    document.getElementById('form-atualizar')
+    document
+        .getElementById('form-atualizar')
         .addEventListener('submit', function (event)
         {
             event.preventDefault()
@@ -127,7 +139,8 @@ function atualizar()
 
 function deletar()
 {
-    document.getElementById('form-deletar')
+    document
+        .getElementById('form-deletar')
         .addEventListener('submit', function (event)
         {
             event.preventDefault();

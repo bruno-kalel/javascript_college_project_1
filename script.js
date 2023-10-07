@@ -1,8 +1,8 @@
+// puxar dados do localstorage, se houverem
 const dadosGuardados = localStorage.getItem('dadosGuardados')
 
-// se os dados guardados existem, eles substituirão o padrão aqui
-// se não, vai esse mesmo
-
+// se a chave dadosGuardados existir, usá-la como json que contém os produtos
+// se não, usar a declaração padrão de 4 produtos
 let json = dadosGuardados ? JSON.parse(dadosGuardados ) :
 [
     {
@@ -27,6 +27,7 @@ let json = dadosGuardados ? JSON.parse(dadosGuardados ) :
     }
 ]
 
+// função para criar um item de unordered list por produto no json
 function mostrarProdutos()
 {
     const listaProdutos = document.getElementById('lista-produtos')
@@ -40,14 +41,18 @@ function mostrarProdutos()
                                quantity: ${produto.quantity}<br><br>`
         listaProdutos.appendChild(itemLista)
     })
-    // guardar os valores no localstorage aqui nessa função
-    // já que ela é chamada em todos os métodos que alteram o json
+
+    // persistir os valores no localstorage
+    // aqui, pois a função mostrarProduto é chamada em adicionar(), atualizar() e deletar()
+    // ou seja, é chamada em todos os métodos que alteram o json
     localStorage.setItem('dadosGuardados', JSON.stringify(json))
 }
 
 // mostrar produtos pela primeira vez, ao abrir a página
 mostrarProdutos()
 
+// esconder todos os formulários da página no primeiro acesso
+// e mostrar apenas um específico ao chamar a função com argumento
 function mostrarForm(formId)
 {
     const forms = document.querySelectorAll('form');
@@ -59,6 +64,7 @@ function mostrarForm(formId)
     formParaMostrar.style.display = 'block';
 }
 
+// mostrar form-adicionar ao clicar no button-adicionar
 document
     .getElementById('button-adicionar')
     .addEventListener('click', () =>
@@ -66,6 +72,7 @@ document
         mostrarForm('form-adicionar')
     })
 
+// mostrar form-atualizar ao clicar no button-atualizar
 document
     .getElementById('button-atualizar')
     .addEventListener('click', () =>
@@ -73,6 +80,7 @@ document
         mostrarForm('form-atualizar')
     })
 
+// mostrar form-deletar ao clicar no button-deletar
 document
     .getElementById('button-deletar')
     .addEventListener('click', () =>
@@ -99,6 +107,7 @@ function adicionar()
 
             const idExiste = json.some(item => item.id === idParaCriar)
 
+            // se o id não existe, o produto é criado e adicionado ao json
             if (!idExiste)
             {
                 const novoProduto =
@@ -132,13 +141,17 @@ function atualizar()
                 .getElementById('quantity-atualizar')
                 .value)
 
-            // encontrar o item a partir do id informado no form
+            // se o id existe, o produto é atualizado no json
             for (let i = 0; i < json.length; i++)
             {
                 if (json[i].id === idParaAtualizar)
                 {
                     json[i].quantity = novaQuantidade
                     break
+                }
+                else
+                {
+                    alert('id não existe, tente outro')
                 }
             }
             mostrarProdutos()

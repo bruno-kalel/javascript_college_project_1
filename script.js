@@ -24,6 +24,7 @@ let json = [
 function mostrarProdutos()
 {
     const listaProdutos = document.getElementById('lista-produtos')
+	// limpar lista antes de recarregar
     listaProdutos.innerHTML = ''
     json.forEach(produto =>
     {
@@ -38,9 +39,11 @@ function mostrarProdutos()
 // mostrar produtos pela primeira vez, ao abrir a página
 mostrarProdutos()
 
-function mostrarForm(formId) {
+function mostrarForm(formId)
+{
     const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
+    forms.forEach(form =>
+	{
         form.style.display = 'none';
     });
     const formParaMostrar = document.getElementById(formId);
@@ -48,30 +51,34 @@ function mostrarForm(formId) {
 }
 
 document.getElementById('button-adicionar')
-    .addEventListener('click', () => {
+    .addEventListener('click', () =>
+	{
         mostrarForm('form-adicionar')
     })
 
 document.getElementById('button-atualizar')
-    .addEventListener('click', () => {
+    .addEventListener('click', () =>
+	{
         mostrarForm('form-atualizar')
     })
 
 document.getElementById('button-deletar')
-    .addEventListener('click', () => {
+    .addEventListener('click', () =>
+	{
         mostrarForm('form-deletar')
     })
 
 function adicionar()
 {
     document.getElementById('form-adicionar')
-        .addEventListener('submit', function (event) {
+        .addEventListener('submit', function (event)
+		{
             event.preventDefault()
             const idParaCriar = parseInt(document.getElementById('id-adicionar').value)
             const nameParaCriar = document.getElementById('name-adicionar').value
             const quantityParaCriar = parseInt(document.getElementById('quantity-adicionar').value)
 
-            const idExiste = json.some(item => item.id === idParaCriar);
+            const idExiste = json.some(item => item.id === idParaCriar)
 
             if(!idExiste)
             {
@@ -118,7 +125,8 @@ function atualizar()
         })
 }
 
-function deletar() {
+function deletar()
+{
     document.getElementById('form-deletar')
         .addEventListener('submit', function (event)
         {

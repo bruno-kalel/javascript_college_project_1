@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <title>gerenciamento de estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>lista de produtos</h1>
+<ul id="lista-produtos"></ul>
+<div id="buttons">
+    <button id="button-adicionar">adicionar novos produtos ao estoque</button>
+    <button id="button-atualizar">atualizar a quantidade de um produto no estoque</button>
+    <button id="button-deletar">deletar produtos do estoque</button>
+</div>
+<form id="form-adicionar">
+    <label for="id-adicionar">id:</label>
+    <input type="number" id="id-adicionar"><br>
+    <label for="name-adicionar">name:</label>
+    <input type="text" id="name-adicionar"><br>
+    <label for="quantity-adicionar">quantity:</label>
+    <input type="number" id="quantity-adicionar"><br>
+    <input type="submit" value="confirmar adicionar" onclick="adicionar()"><br>
+</form>
+<form id="form-atualizar">
+    <label for="id-atualizar">id:</label>
+    <input type="number" id="id-atualizar"><br>
+    <label for="quantity-atualizar">quantity:</label>
+    <input type="number" id="quantity-atualizar"><br>
+    <input type="submit" value="confirmar atualizar" onclick="atualizar()"><br>
+</form>
+<form id="form-deletar">
+    <label for="id-deletar">id:</label>
+    <input type="number" id="id-deletar"><br>
+    <input type="submit" value="confirmar deletar" onclick="deletar()"><br>
+</form>
+<script src="script.js"></script>
+</body>
+</html>

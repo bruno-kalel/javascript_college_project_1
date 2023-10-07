@@ -1,0 +1,14 @@
+#buttons button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#form-adicionar, #form-atualizar, #form-deletar
+{
+    display: none;
+}
+
+form label, form input
+{
+    margin-bottom: 10px;
+}
